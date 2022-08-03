@@ -1,0 +1,232 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10025,        224]
+NotebookOptionsPosition[      9161,        201]
+NotebookOutlinePosition[      9532,        217]
+CellTagsIndexPosition[      9489,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"P", "[", "n_", "]"}], ":=", 
+   RowBox[{"N", "[", 
+    RowBox[{"1", "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Factorial", "[", "n", "]"}], "*", 
+        RowBox[{"Binomial", "[", 
+         RowBox[{"365", ",", "n"}], "]"}]}], ")"}], " ", "/", 
+      RowBox[{"365", "^", "n"}]}]}], " ", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"listofprob", "=", 
+  RowBox[{"Array", "[", 
+   RowBox[{"P", ",", "100"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.868493642760147*^9, 3.8684937011117573`*^9}, {
+  3.8684937350699015`*^9, 3.8684937707723103`*^9}, {3.8684939248865337`*^9, 
+  3.8684939320762215`*^9}, {3.868494110246517*^9, 3.868494161951*^9}, {
+  3.868494217776786*^9, 3.8684942528108735`*^9}, {3.868494301508299*^9, 
+  3.868494374343274*^9}, {3.868494415977912*^9, 3.8684944717622585`*^9}, {
+  3.8684945126156693`*^9, 3.8684945401939907`*^9}, {3.86849466367694*^9, 
+  3.868494674125385*^9}, {3.868494793860683*^9, 3.8684948517354493`*^9}, {
+  3.8684949718554125`*^9, 3.868494979076141*^9}, {3.868495087462793*^9, 
+  3.8684952290247297`*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"adf25cec-4525-49e3-954f-df8d8c08e8f2"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.`", ",", "0.0027397260273972603`", ",", "0.008204165884781385`", ",", 
+   "0.016355912466550306`", ",", "0.02713557369979359`", ",", 
+   "0.04046248364911149`", ",", "0.056235703095975406`", ",", 
+   "0.07433529235166902`", ",", "0.09462383388916669`", ",", 
+   "0.11694817771107764`", ",", "0.14114137832173307`", ",", 
+   "0.1670247888380644`", ",", "0.1944102752324294`", ",", 
+   "0.223102512004973`", ",", "0.25290131976368635`", ",", 
+   "0.28360400525284996`", ",", "0.31500766529656066`", ",", 
+   "0.34691141787178936`", ",", "0.3791185260315367`", ",", 
+   "0.41143838358058005`", ",", "0.4436883351652057`", ",", 
+   "0.47569530766255`", ",", "0.5072972343239853`", ",", 
+   "0.5383442579145289`", ",", "0.5686997039694639`", ",", 
+   "0.5982408201359389`", ",", "0.626859282263242`", ",", 
+   "0.6544614723423993`", ",", "0.680968537477777`", ",", 
+   "0.7063162427192686`", ",", "0.7304546337286437`", ",", 
+   "0.7533475278503207`", ",", "0.7749718541757721`", ",", 
+   "0.7953168646201543`", ",", "0.8143832388747152`", ",", 
+   "0.8321821063798794`", ",", "0.8487340082163846`", ",", 
+   "0.864067821082121`", ",", "0.878219664366722`", ",", 
+   "0.8912318098179491`", ",", "0.9031516114817354`", ",", 
+   "0.9140304715618692`", ",", "0.9239228556561198`", ",", 
+   "0.9328853685514263`", ",", "0.9409758994657749`", ",", 
+   "0.9482528433672547`", ",", "0.9547744028332994`", ",", 
+   "0.9605979728794225`", ",", "0.9657796093226765`", ",", 
+   "0.9703735795779884`", ",", "0.9744319933344284`", ",", 
+   "0.9780045093342753`", ",", "0.9811381134839128`", ",", 
+   "0.9838769627588515`", ",", "0.9862622888164461`", ",", 
+   "0.9883323548852008`", ",", "0.99012245934117`", ",", 
+   "0.9916649793892612`", ",", "0.992989448417817`", ",", 
+   "0.994122660865348`", ",", "0.9950887988052908`", ",", 
+   "0.9959095748953656`", ",", "0.9966043868309472`", ",", 
+   "0.9971904789669755`", ",", "0.9976831073124921`", ",", 
+   "0.9980957046404046`", ",", "0.9984400429793999`", ",", 
+   "0.9987263912544143`", ",", "0.9989636663083863`", ",", 
+   "0.9991595759651571`", ",", "0.9993207531773186`", ",", 
+   "0.9994528806414568`", ",", "0.9995608055560188`", ",", 
+   "0.999648644444815`", ",", "0.9997198781738114`", ",", 
+   "0.9997774374531653`", ",", "0.9998237792437389`", ",", 
+   "0.9998609545813613`", ",", "0.999890668396851`", ",", 
+   "0.9999143319493136`", ",", "0.999933108508368`", ",", 
+   "0.9999479529215795`", ",", "0.9999596456898822`", ",", 
+   "0.9999688221494432`", ",", "0.9999759973260097`", ",", 
+   "0.9999815869898158`", ",", "0.9999859253976946`", ",", 
+   "0.9999892801659155`", ",", "0.9999918646738593`", ",", 
+   "0.9999938483561236`", ",", "0.9999953651998191`", ",", 
+   "0.9999965207253437`", ",", "0.9999973976932023`", ",", 
+   "0.999998060746715`", ",", "0.9999985601708488`", ",", 
+   "0.9999989349209019`", ",", "0.9999992150512947`", ",", 
+   "0.9999994236541014`", ",", "0.9999995783990275`", ",", 
+   "0.9999996927510721`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8684949793728805`*^9, {3.8684951310733056`*^9, 3.8684951723878345`*^9}, {
+   3.868495203330786*^9, 3.8684952301811085`*^9}},
+ CellLabel->"Out[74]=",ExpressionUUID->"9e7ce067-5956-4010-8950-19c177691901"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{"listofprob", ",", 
+     RowBox[{"Frame", "\[Rule]", " ", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<number of people\>\"", ",", "\"\<probability of match\>\""}], 
+       "}"}]}], ",", " ", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"\"\<The probability of at least two of the \\n \>\"", " ", "<>", 
+       RowBox[{"ToString", "[", "n", "]"}], "<>", " ", 
+       "\"\< people chosen sharing the same birthday is \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"P", "[", "n", "]"}], "]"}]}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "\"\<number of people\>\""}], "}"}], ",", 
+     "1", ",", "100", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8684952512843857`*^9, 3.8684952670441628`*^9}, {
+  3.868495463690884*^9, 3.868495495058172*^9}, {3.8684955409143686`*^9, 
+  3.868495584098274*^9}, {3.8684956498671207`*^9, 3.8684956952282705`*^9}, {
+  3.8684957527203245`*^9, 3.8684958327252536`*^9}, {3.868495945538931*^9, 
+  3.8684959480240717`*^9}, {3.8684960432027216`*^9, 3.8684960835234456`*^9}, {
+  3.868496316074663*^9, 3.8684963382376566`*^9}, {3.86849644834221*^9, 
+  3.8684965161680884`*^9}, {3.868496667532745*^9, 3.8684966765665145`*^9}, {
+  3.8684967131403666`*^9, 3.868496969010979*^9}},
+ CellLabel->
+  "In[102]:=",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 45, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`n$$], 1, "number of people"}, 1, 100, 1}}, 
+    Typeset`size$$ = {396., {145., 150.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$37516$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`n$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$37516$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      ListLinePlot[$CellContext`listofprob, Frame -> True, 
+        FrameLabel -> {"number of people", "probability of match"}, PlotLabel -> 
+        StringJoin["The probability of at least two of the \n ", 
+          ToString[$CellContext`n$$], 
+          " people chosen sharing the same birthday is ", 
+          ToString[
+           $CellContext`P[$CellContext`n$$]]]], 
+      "Specifications" :> {{{$CellContext`n$$, 1, "number of people"}, 1, 100,
+          1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{451., {195., 202.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.868496957147764*^9, 3.8684969695108986`*^9}},
+ CellLabel->
+  "Out[102]=",ExpressionUUID->"710812cc-5520-4ce6-8d49-989530a45c07"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.868499518123826*^9, 3.868499533332756*^9}, {
+  3.8685002640583134`*^9, 
+  3.8685002648357277`*^9}},ExpressionUUID->"e917c290-4702-44aa-bc6b-\
+90582dca118e"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8684997230315676`*^9, 3.8684997274235287`*^9}, {
+  3.8685002618823137`*^9, 
+  3.868500262524742*^9}},ExpressionUUID->"8d95a99b-3a70-4f4c-9cb9-\
+9af6f6c3b813"]
+},
+WindowSize->{636, 620},
+WindowMargins->{{Automatic, -5}, {Automatic, 0}},
+Magnification:>1.1 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1222, 26, 77, "Input",ExpressionUUID->"adf25cec-4525-49e3-954f-df8d8c08e8f2"],
+Cell[1805, 50, 3269, 56, 389, "Output",ExpressionUUID->"9e7ce067-5956-4010-8950-19c177691901"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5111, 111, 1534, 31, 143, "Input",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
+Cell[6648, 144, 2079, 42, 451, "Output",ExpressionUUID->"710812cc-5520-4ce6-8d49-989530a45c07"]
+}, Open  ]],
+Cell[8742, 189, 205, 4, 32, "Input",ExpressionUUID->"e917c290-4702-44aa-bc6b-90582dca118e"],
+Cell[8950, 195, 207, 4, 32, "Input",ExpressionUUID->"8d95a99b-3a70-4f4c-9cb9-9af6f6c3b813"]
+}
+]
+*)
+
