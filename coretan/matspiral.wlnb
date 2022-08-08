@@ -1,0 +1,301 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "n=4\r\nmovement={{1,0},{0,1},{-1,0},{0,-1}}\r\nmat=Table[0, {i,n},{j,n}]\r\nmat[[1,1]]=1\r\ncounter=2\r\nchangedDirectionCounter=0\r\nrowPointer=1\r\ncolumnPointer=1\r\nmov=movement[[Mod[changedDirectionCounter,4]+1]]\r\n\r\nWhile[counter<= n^2,\r\nIf[rowPointer+mov[[1]]>n || rowPointer +mov[[1]]<1 || columnPointer+mov[[2]]>n ||columnPointer+ mov[[2]]<1 \r\n    || mat[[rowPointer+mov[[1]], columnPointer+mov[[2]]]] !=0,\r\n     changedDirectionCounter+=1;\r\n     mov=movement[[Mod[changedDirectionCounter,4]+1]];\r\n     \r\n     ,rowPointer+=mov[[1]]; columnPointer+=mov[[2]] ;\r\n    mat[[rowPointer, columnPointer]]= counter;\r\n     counter+=1;\r\n]\r\n]\r\n",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>4</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "4",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "3bba4c5f-c98f-41ee-a95b-eead49597126",
+     "metadata": {
+      "cellLabel": "Out[1]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>1</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>-</w><w>1</w></wrow><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wrow><w></w><w>-</w><w>1</w></wrow></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{1, 0}, {0, 1}, {-1, 0}, {0, -1}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d064cd39-e406-446e-a119-516acd3d5af9",
+     "metadata": {
+      "cellLabel": "Out[2]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "bece047d-ee39-4de7-9e67-c10a9df6a66f",
+     "metadata": {
+      "cellLabel": "Out[3]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>1</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "dc3f36ad-f88c-4bee-b79e-497996898019",
+     "metadata": {
+      "cellLabel": "Out[4]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>2</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "2",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d37b9737-d787-4992-a769-41566aa0f681",
+     "metadata": {
+      "cellLabel": "Out[5]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "5b4e5124-ccf8-4977-b114-fc0000e2c7a8",
+     "metadata": {
+      "cellLabel": "Out[6]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>1</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "8d44a8b2-37c9-4d65-95ca-efb066f9a4f7",
+     "metadata": {
+      "cellLabel": "Out[7]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>1</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "92c3f027-bff8-4689-84e1-f86238cd878d",
+     "metadata": {
+      "cellLabel": "Out[8]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>1</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{1, 0}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f6d3ec08-99c3-4d64-beb9-4381ed522210",
+     "metadata": {
+      "cellLabel": "Out[9]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "mat //MatrixForm",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>(</wb><w>⁠</w><wgrid style=\"grid-template-columns:repeat(4,max-content);\"><w><w>1</w></w><w><w>12</w></w><w><w>11</w></w><w><w>10</w></w><w><w>2</w></w><w><w>13</w></w><w><w>16</w></w><w><w>9</w></w><w><w>3</w></w><w><w>14</w></w><w><w>15</w></w><w><w>8</w></w><w><w>4</w></w><w><w>5</w></w><w><w>6</w></w><w><w>7</w></w></wgrid><w>⁠</w><wb>)</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "MatrixForm[{{1, 12, 11, 10}, {2, 13, 16, 9}, {3, 14, 15, 8}, {4, 5, 6, 7}}]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "83a9c6a7-e43a-4a4a-848e-3ca2ca5dfb05",
+     "metadata": {
+      "cellLabel": "Out[11]//MatrixForm= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "matrix[x_]:= Module[{n=x,movement,mat,counter=2, changedDirectionCounter=0, rowPointer=1, columnPointer=1,mov, rowIndexMax, columnIndexMax},\r\n    (* mengenai variabel lokal\r\n    n=x, merupakan dimensi dari matriksnya\r\n    mat, merupakan matriks spiral yang akan dibentuk\r\n    counter, angka yang akan disi pada matriks (grid) selama proses traversal berlangsung\r\n    changedDirectionCounter, angka yang digunakan untuk mentrack sudah berapa banyak ganti arah\r\n    digunakan juga untuk menentukkan arah gerak\r\n\r\n    rowPointer, pointer yang menunjukkan lokasi barisnya\r\n    columnPointer, pointer yang menunjukkan lokasi kolomnya\r\n    mov, variabel yang akan menentukkan gerakan traversal yang dilakukan nantinya\r\n    rowIndexMax, indeks baris dari nilai maksimalnya\r\n    columnIndex, indeks kolom dari nilai maksimalnya\r\n     *)\r\n    movement={{1,0},{0,1},{-1,0},{0,-1}}; (* list semua movement (berurutan) {bawah, kanan, atas, kiri}*) \r\n    mat=Table[0, {i,n},{j,n}]; (* inisialisasi matriks 0*)\r\n    mat[[1,1]]=1; \r\n    mov=movement[[Mod[changedDirectionCounter,4]+1]]; (*select movement (pertama kali gerak ke bawah)*)\r\n\r\n    (*proses looping mengisi matriks*)\r\n    While[counter<= n^2,\r\n    If[rowPointer+mov[[1]]>n || rowPointer +mov[[1]]<1 || columnPointer+mov[[2]]>n ||columnPointer+ mov[[2]]<1 \r\n    || mat[[rowPointer+mov[[1]], columnPointer+mov[[2]]]] !=0,\r\n    (* jika next move keluar batas range atau cell sudah disi, kita akan ganti movenya*)\r\n     changedDirectionCounter+=1; \r\n     mov=movement[[Mod[changedDirectionCounter,4]+1]];\r\n\r\n     ,\r\n    (* jika tidak, kita gerak dengan move tersebut dan isi cell dengan angka counter (lalu diincrease)*)\r\n    rowPointer+=mov[[1]]; columnPointer+=mov[[2]] ;\r\n    mat[[rowPointer, columnPointer]]= counter;\r\n    counter+=1;\r\n     \r\n            ]\r\n        ];\r\n        \r\n    rowIndexMax= Position[mat,n^2][[1,1]]; (* cari indeks nilai maks*)\r\n    columnIndexMax=Position[mat,n^2][[1,2]]; (* cari indeks nilai maks*)\r\n    print[MatrixForm[mat]]\r\n    Print[\"1. Elemen terbesar adalah \"<>ToString[n^2]<>\" yang berada pada baris ke-\"<>ToString[rowIndexMax]<>\" dan kolom ke-\"<>ToString[columnIndexMax]]\r\n    If[rowIndexMax== columnIndexMax, Print[\"2. Elemen terbesarnya berada di tengah matriks\"];,\r\n    Print[\"2. Elemen terbesarnya tidak ada berada ditengah matriks\"];]\r\n    Print[\"3. Total dari semua elemennya adalah \"<>ToString[(n^2+1) n^2/2]<> \" yang merupakan hasil dari (\"<>ToString[(n^2)]<>\")(\"<>ToString[(n^2+1)]<>\")/2\"];\r\n    MatrixForm[mat]\r\n\r\n    \r\n]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "matrix[8]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre>1. Elemen terbesar adalah 64 yang berada pada baris ke-4 dan kolom ke-5\n</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"1. Elemen terbesar adalah 64 yang berada pada baris ke-4 dan kolom ke-5\\n\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "3cc92da2-8f49-4044-870e-de5e028b50d6",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre>2. Elemen terbesarnya tidak ada berada ditengah matriks\n</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"2. Elemen terbesarnya tidak ada berada ditengah matriks\\n\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "30d94e09-a836-42d0-be00-596a632c265a",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre>3. Total dari semua elemennya adalah 2080 yang merupakan hasil dari\\\n \n&gt;   (64)(65)/2\n</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"3. Total dari semua elemennya adalah 2080 yang merupakan hasil dari\\\\\\n \\n>   (64)(65)/2\\n\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "1e648aef-bd2d-42fa-81b4-953a55f2b0df",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>(</wb><w>⁠</w><wgrid style=\"grid-template-columns:repeat(8,max-content);\"><w><w>1</w></w><w><w>28</w></w><w><w>27</w></w><w><w>26</w></w><w><w>25</w></w><w><w>24</w></w><w><w>23</w></w><w><w>22</w></w><w><w>2</w></w><w><w>29</w></w><w><w>48</w></w><w><w>47</w></w><w><w>46</w></w><w><w>45</w></w><w><w>44</w></w><w><w>21</w></w><w><w>3</w></w><w><w>30</w></w><w><w>49</w></w><w><w>60</w></w><w><w>59</w></w><w><w>58</w></w><w><w>43</w></w><w><w>20</w></w><w><w>4</w></w><w><w>31</w></w><w><w>50</w></w><w><w>61</w></w><w><w>64</w></w><w><w>57</w></w><w><w>42</w></w><w><w>19</w></w><w><w>5</w></w><w><w>32</w></w><w><w>51</w></w><w><w>62</w></w><w><w>63</w></w><w><w>56</w></w><w><w>41</w></w><w><w>18</w></w><w><w>6</w></w><w><w>33</w></w><w><w>52</w></w><w><w>53</w></w><w><w>54</w></w><w><w>55</w></w><w><w>40</w></w><w><w>17</w></w><w><w>7</w></w><w><w>34</w></w><w><w>35</w></w><w><w>36</w></w><w><w>37</w></w><w><w>38</w></w><w><w>39</w></w><w><w>16</w></w><w><w>8</w></w><w><w>9</w></w><w><w>10</w></w><w><w>11</w></w><w><w>12</w></w><w><w>13</w></w><w><w>14</w></w><w><w>15</w></w></wgrid><w>⁠</w><wb>)</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "MatrixForm[{{1, 28, 27, 26, 25, 24, 23, 22}, {2, 29, 48, 47, 46, 45, 44, 21}, {3, 30, 49, 60, 59, 58, 43, 20}, {4, 31, 50, 61, 64, 57, 42, 19}, {5, 32, 51, 62, 63, 56, 41, 18}, {6, 33, 52, 53, 54, 55, 40, 17}, {7, 34, 35, 36, 37, 38, 39, 16}, {8, 9, 10, 11, 12, 13, 14, 15}}]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "a1650eb9-8f4b-44a0-a634-5a0d4320feaf",
+     "metadata": {
+      "cellLabel": "Out[124]//MatrixForm= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
