@@ -1,0 +1,440 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16593,        430]
+NotebookOptionsPosition[     15194,        398]
+NotebookOutlinePosition[     15567,        414]
+CellTagsIndexPosition[     15524,        411]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"matrix", "[", "x_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"n", "=", "x"}], ",", "movement", ",", "mat", ",", 
+      RowBox[{"counter", "=", "2"}], ",", " ", 
+      RowBox[{"changedDirectionCounter", "=", "0"}], ",", " ", 
+      RowBox[{"rowPointer", "=", "1"}], ",", " ", 
+      RowBox[{"columnPointer", "=", "1"}], ",", "mov", ",", " ", 
+      "rowIndexMax", ",", " ", "columnIndexMax"}], "}"}], ",", "\n", "    ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"mengenai", " ", "variabel", " ", "lokal", "\n", "    ", "n"}],
+        "=", "x"}], ",", " ", 
+      RowBox[{
+      "merupakan", " ", "dimensi", " ", "dari", " ", "matriksnya", "\n", 
+       "    ", "mat"}], ",", " ", 
+      RowBox[{
+      "merupakan", " ", "matriks", " ", "spiral", " ", "yang", " ", "akan", 
+       " ", "dibentuk", "\n", "    ", "counter"}], ",", " ", 
+      RowBox[{
+      "angka", " ", "yang", " ", "akan", " ", "disi", " ", "pada", " ", 
+       "matriks", " ", 
+       RowBox[{"(", "grid", ")"}], " ", "selama", " ", "proses", " ", 
+       "traversal", " ", "berlangsung", "\n", "    ", 
+       "changedDirectionCounter"}], ",", " ", 
+      RowBox[{
+      "angka", " ", "yang", " ", "digunakan", " ", "untuk", " ", "mentrack", 
+       " ", "sudah", " ", "berapa", " ", "banyak", " ", "ganti", " ", "arah", 
+       "\n", "    ", "digunakan", " ", "juga", " ", "untuk", " ", 
+       "menentukkan", " ", "arah", " ", "gerak", "\n", "\n", "    ", 
+       "rowPointer"}], ",", " ", 
+      RowBox[{
+      "pointer", " ", "yang", " ", "menunjukkan", " ", "lokasi", " ", 
+       "barisnya", "\n", "    ", "columnPointer"}], ",", " ", 
+      RowBox[{
+      "pointer", " ", "yang", " ", "menunjukkan", " ", "lokasi", " ", 
+       "kolomnya", "\n", "    ", "mov"}], ",", " ", 
+      RowBox[{
+      "variabel", " ", "yang", " ", "akan", " ", "menentukkan", " ", 
+       "gerakan", " ", "traversal", " ", "yang", " ", "dilakukan", " ", 
+       "nantinya", "\n", "    ", "rowIndexMax"}], ",", " ", 
+      RowBox[{
+      "indeks", " ", "baris", " ", "dari", " ", "nilai", " ", "maksimalnya", 
+       "\n", "    ", "columnIndex"}], ",", " ", 
+      RowBox[{
+      "indeks", " ", "kolom", " ", "dari", " ", "nilai", " ", 
+       "maksimalnya"}]}], "\n", "     ", "*)"}], "\n", "    ", 
+    RowBox[{
+     RowBox[{"movement", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], ";", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"list", " ", "semua", " ", "movement", " ", 
+       RowBox[{"(", "berurutan", ")"}], " ", 
+       RowBox[{"{", 
+        RowBox[{
+        "bawah", ",", " ", "kanan", ",", " ", "atas", ",", " ", "kiri"}], 
+        "}"}]}], "*)"}], " ", "\n", "    ", 
+     RowBox[{"mat", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{"0", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"inisialisasi", " ", "matriks", " ", "0"}], "*)"}], "\n", 
+     "    ", 
+     RowBox[{
+      RowBox[{"mat", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], "=", "1"}], ";", " ", "\n", 
+     "    ", 
+     RowBox[{"mov", "=", 
+      RowBox[{"movement", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"Mod", "[", 
+          RowBox[{"changedDirectionCounter", ",", "4"}], "]"}], "+", "1"}], 
+        "]"}], "]"}]}], ";", " ", 
+     RowBox[{"(*", 
+      RowBox[{"select", " ", "movement", " ", 
+       RowBox[{"(", 
+        RowBox[{
+        "pertama", " ", "kali", " ", "gerak", " ", "ke", " ", "bawah"}], 
+        ")"}]}], "*)"}], "\n", "\n", "    ", 
+     RowBox[{"(*", 
+      RowBox[{"proses", " ", "looping", " ", "mengisi", " ", "matriks"}], 
+      "*)"}], "\n", "    ", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"counter", "<=", " ", 
+        RowBox[{"n", "^", "2"}]}], ",", "\n", "    ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"rowPointer", "+", 
+            RowBox[{"mov", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ">", "n"}], " ", "||", " ", 
+          RowBox[{
+           RowBox[{"rowPointer", " ", "+", 
+            RowBox[{"mov", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "<", "1"}], " ", "||", " ", 
+          RowBox[{
+           RowBox[{"columnPointer", "+", 
+            RowBox[{"mov", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ">", "n"}], " ", "||", 
+          RowBox[{
+           RowBox[{"columnPointer", "+", " ", 
+            RowBox[{"mov", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "<", "1"}], " ", "\n", "    ", 
+          "||", " ", 
+          RowBox[{
+           RowBox[{"mat", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{"rowPointer", "+", 
+               RowBox[{"mov", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], ",", " ", 
+              RowBox[{"columnPointer", "+", 
+               RowBox[{"mov", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}]}], "]"}], "]"}], " ", "!=", 
+           "0"}]}], ",", "\n", "    ", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+           "jika", " ", "next", " ", "move", " ", "keluar", " ", "batas", " ",
+             "range", " ", "atau", " ", "cell", " ", "sudah", " ", "disi"}], 
+           ",", " ", 
+           RowBox[{"kita", " ", "akan", " ", "ganti", " ", "movenya"}]}], 
+          "*)"}], "\n", "     ", 
+         RowBox[{
+          RowBox[{"changedDirectionCounter", "+=", "1"}], ";", " ", "\n", 
+          "     ", 
+          RowBox[{"mov", "=", 
+           RowBox[{"movement", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{"Mod", "[", 
+               RowBox[{"changedDirectionCounter", ",", "4"}], "]"}], "+", 
+              "1"}], "]"}], "]"}]}], ";"}], "\n", "\n", "     ", ",", "\n", 
+         "    ", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{"jika", " ", "tidak"}], ",", " ", 
+           RowBox[{
+           "kita", " ", "gerak", " ", "dengan", " ", "move", " ", "tersebut", 
+            " ", "dan", " ", "isi", " ", "cell", " ", "dengan", " ", "angka", 
+            " ", "counter", " ", 
+            RowBox[{"(", 
+             RowBox[{"lalu", " ", "diincrease"}], ")"}]}]}], "*)"}], "\n", 
+         "    ", 
+         RowBox[{
+          RowBox[{"rowPointer", "+=", 
+           RowBox[{"mov", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", " ", 
+          RowBox[{"columnPointer", "+=", 
+           RowBox[{"mov", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], " ", ";", "\n", "    ", 
+          RowBox[{
+           RowBox[{"mat", "[", 
+            RowBox[{"[", 
+             RowBox[{"rowPointer", ",", " ", "columnPointer"}], "]"}], "]"}], 
+           "=", " ", "counter"}], ";", "\n", "    ", 
+          RowBox[{"counter", "+=", "1"}], ";"}]}], "\n", "     ", "\n", 
+        "            ", "]"}]}], "\n", "        ", "]"}], ";", "\n", 
+     "        ", "\n", "    ", 
+     RowBox[{"rowIndexMax", "=", " ", 
+      RowBox[{
+       RowBox[{"Position", "[", 
+        RowBox[{"mat", ",", 
+         RowBox[{"n", "^", "2"}]}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"cari", " ", "indeks", " ", "nilai", " ", "maks"}], "*)"}], 
+     "\n", "    ", 
+     RowBox[{"columnIndexMax", "=", 
+      RowBox[{
+       RowBox[{"Position", "[", 
+        RowBox[{"mat", ",", 
+         RowBox[{"n", "^", "2"}]}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"cari", " ", "indeks", " ", "nilai", " ", "maks"}], "*)"}], 
+     "\n", "    ", 
+     RowBox[{"Print", "[", 
+      RowBox[{"MatrixForm", "[", "mat", "]"}], "]"}], ";", "\n", "    ", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<1. Elemen terbesar adalah \>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"n", "^", "2"}], "]"}], "<>", 
+        "\"\< yang berada pada baris ke-\>\"", "<>", 
+        RowBox[{"ToString", "[", "rowIndexMax", "]"}], "<>", 
+        "\"\< dan kolom ke-\>\"", "<>", 
+        RowBox[{"ToString", "[", "columnIndexMax", "]"}]}], "]"}], "\n", 
+      "    ", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"rowIndexMax", "==", " ", "columnIndexMax"}], ",", " ", 
+        RowBox[{
+         RowBox[{
+         "Print", "[", 
+          "\"\<2. Elemen terbesarnya berada di tengah matriks\>\"", "]"}], 
+         ";"}], ",", "\n", "    ", 
+        RowBox[{
+         RowBox[{
+         "Print", "[", 
+          "\"\<2. Elemen terbesarnya tidak ada berada ditengah matriks\>\"", 
+          "]"}], ";"}]}], "]"}], "\n", "    ", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<3. Total dari semua elemennya adalah \>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"n", "^", "2"}], "+", "1"}], ")"}], " ", 
+          RowBox[{
+           RowBox[{"n", "^", "2"}], "/", "2"}]}], "]"}], "<>", " ", 
+        "\"\< yang merupakan hasil dari (\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"(", 
+          RowBox[{"n", "^", "2"}], ")"}], "]"}], "<>", "\"\<)(\>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"n", "^", "2"}], "+", "1"}], ")"}], "]"}], "<>", 
+        "\"\<)/2\>\""}], "]"}]}], ";"}]}], "\n", "\n", "    ", "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.8685891430764904`*^9, 3.868589162458336*^9}, 
+   3.8685892073117847`*^9, {3.8685892832265444`*^9, 3.868589308675316*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"844b8d01-0546-49ed-a0ec-45daeee25723"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"matrix", "[", "3", "]"}]], "Code",
+ CellChangeTimes->{{3.8685891652854943`*^9, 3.8685891729068155`*^9}, {
+  3.8685892712210894`*^9, 3.8685892713451567`*^9}, {3.8685894092346087`*^9, 
+  3.8685894249654226`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"b176a1de-93c0-4129-9933-fd8ac918c1c7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "8", "7"},
+     {"2", "9", "6"},
+     {"3", "4", "5"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.868589173431734*^9, 3.8685892113432074`*^9, {3.8685892725242357`*^9, 
+   3.8685893111796618`*^9}, {3.8685894100267787`*^9, 3.8685894253889503`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"39186840-1a49-47ae-981d-bfe48daf11c4"],
+
+Cell[BoxData["\<\"1. Elemen terbesar adalah 9 yang berada pada baris ke-2 dan \
+kolom ke-2\"\>"], "Print",
+ CellChangeTimes->{
+  3.868589173431734*^9, 3.8685892113432074`*^9, {3.8685892725242357`*^9, 
+   3.8685893111796618`*^9}, {3.8685894100267787`*^9, 3.8685894253969507`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"5060f7b7-2d48-4354-af96-cf845f18103a"],
+
+Cell[BoxData["\<\"2. Elemen terbesarnya berada di tengah matriks\"\>"], \
+"Print",
+ CellChangeTimes->{
+  3.868589173431734*^9, 3.8685892113432074`*^9, {3.8685892725242357`*^9, 
+   3.8685893111796618`*^9}, {3.8685894100267787`*^9, 3.8685894254019513`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"db548435-3e7c-402d-856d-c2376b532a47"],
+
+Cell[BoxData["\<\"3. Total dari semua elemennya adalah 45 yang merupakan \
+hasil dari (9)(10)/2\"\>"], "Print",
+ CellChangeTimes->{
+  3.868589173431734*^9, 3.8685892113432074`*^9, {3.8685892725242357`*^9, 
+   3.8685893111796618`*^9}, {3.8685894100267787`*^9, 3.8685894254069567`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"e6cf9ce6-cba7-4db3-82fa-3df0b7ae955f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"matrix", "[", "4", "]"}]], "Code",
+ CellChangeTimes->{{3.868589229044527*^9, 3.8685892376733065`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"e57252df-f255-45a1-8cd2-dd31eb17dc3d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "12", "11", "10"},
+     {"2", "13", "16", "9"},
+     {"3", "14", "15", "8"},
+     {"4", "5", "6", "7"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.868589238680842*^9, {3.8685892986948986`*^9, 3.8685893127125673`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"ece2916b-7328-4972-a7fb-bb7d9a0f0f33"],
+
+Cell[BoxData["\<\"1. Elemen terbesar adalah 16 yang berada pada baris ke-2 \
+dan kolom ke-3\"\>"], "Print",
+ CellChangeTimes->{
+  3.868589238680842*^9, {3.8685892986948986`*^9, 3.8685893127237883`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"4135d60a-1db7-4cab-bb09-2db26665992f"],
+
+Cell[BoxData["\<\"2. Elemen terbesarnya tidak ada berada ditengah \
+matriks\"\>"], "Print",
+ CellChangeTimes->{
+  3.868589238680842*^9, {3.8685892986948986`*^9, 3.8685893127267885`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"f9324602-2a8d-4766-8d5e-515da486d96c"],
+
+Cell[BoxData["\<\"3. Total dari semua elemennya adalah 136 yang merupakan \
+hasil dari (16)(17)/2\"\>"], "Print",
+ CellChangeTimes->{
+  3.868589238680842*^9, {3.8685892986948986`*^9, 3.8685893127297907`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"a67ad367-7c57-4372-a3e7-09e62daec881"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 629},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.1 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10145, 249, 911, "Code",ExpressionUUID->"844b8d01-0546-49ed-a0ec-45daeee25723"],
+Cell[CellGroupData[{
+Cell[10728, 273, 313, 5, 55, "Code",ExpressionUUID->"b176a1de-93c0-4129-9933-fd8ac918c1c7"],
+Cell[CellGroupData[{
+Cell[11066, 282, 894, 24, 56, "Print",ExpressionUUID->"39186840-1a49-47ae-981d-bfe48daf11c4"],
+Cell[11963, 308, 384, 7, 23, "Print",ExpressionUUID->"5060f7b7-2d48-4354-af96-cf845f18103a"],
+Cell[12350, 317, 360, 7, 23, "Print",ExpressionUUID->"db548435-3e7c-402d-856d-c2376b532a47"],
+Cell[12713, 326, 389, 7, 23, "Print",ExpressionUUID->"e6cf9ce6-cba7-4db3-82fa-3df0b7ae955f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13151, 339, 205, 3, 55, "Code",ExpressionUUID->"e57252df-f255-45a1-8cd2-dd31eb17dc3d"],
+Cell[CellGroupData[{
+Cell[13381, 346, 865, 24, 73, "Print",ExpressionUUID->"ece2916b-7328-4972-a7fb-bb7d9a0f0f33"],
+Cell[14249, 372, 307, 6, 23, "Print",ExpressionUUID->"4135d60a-1db7-4cab-bb09-2db26665992f"],
+Cell[14559, 380, 291, 6, 23, "Print",ExpressionUUID->"f9324602-2a8d-4766-8d5e-515da486d96c"],
+Cell[14853, 388, 313, 6, 23, "Print",ExpressionUUID->"a67ad367-7c57-4372-a3e7-09e62daec881"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

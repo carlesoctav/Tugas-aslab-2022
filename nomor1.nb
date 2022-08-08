@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10025,        224]
-NotebookOptionsPosition[      9161,        201]
-NotebookOutlinePosition[      9532,        217]
-CellTagsIndexPosition[      9489,        214]
+NotebookDataLength[     10974,        243]
+NotebookOptionsPosition[     10109,        220]
+NotebookOutlinePosition[     10482,        236]
+CellTagsIndexPosition[     10439,        233]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,11 +32,22 @@ Cell[BoxData[{
         RowBox[{"Factorial", "[", "n", "]"}], "*", 
         RowBox[{"Binomial", "[", 
          RowBox[{"365", ",", "n"}], "]"}]}], ")"}], " ", "/", 
-      RowBox[{"365", "^", "n"}]}]}], " ", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+      RowBox[{"365", "^", "n"}]}]}], " ", "]"}]}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "mengeluarkan", " ", "probabilitas", " ", "permasalahannya", " ", "dimana",
+     " ", "n", " ", "banyaknya", " ", "orang"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{"listofprob", "=", 
   RowBox[{"Array", "[", 
-   RowBox[{"P", ",", "100"}], "]"}]}]}], "Input",
+   RowBox[{"P", ",", "100"}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"membuat", " ", "list", " ", "dari", " ", 
+      RowBox[{"p", "[", "n", "]"}], " ", "untuk", " ", "n"}], "\[Equal]", 
+     RowBox[{"1", " ", "ke", " ", "n"}]}], "=", "100"}], " ", 
+   "*)"}]}]}], "Input",
  CellChangeTimes->{{3.868493642760147*^9, 3.8684937011117573`*^9}, {
   3.8684937350699015`*^9, 3.8684937707723103`*^9}, {3.8684939248865337`*^9, 
   3.8684939320762215`*^9}, {3.868494110246517*^9, 3.868494161951*^9}, {
@@ -45,8 +56,10 @@ Cell[BoxData[{
   3.8684945126156693`*^9, 3.8684945401939907`*^9}, {3.86849466367694*^9, 
   3.868494674125385*^9}, {3.868494793860683*^9, 3.8684948517354493`*^9}, {
   3.8684949718554125`*^9, 3.868494979076141*^9}, {3.868495087462793*^9, 
-  3.8684952290247297`*^9}},
- CellLabel->"In[73]:=",ExpressionUUID->"adf25cec-4525-49e3-954f-df8d8c08e8f2"],
+  3.8684952290247297`*^9}, {3.8685895817664976`*^9, 3.8685896112405148`*^9}, {
+  3.8685940873701696`*^9, 3.8685941248478417`*^9}, {3.8685943004467497`*^9, 
+  3.868594326931856*^9}},ExpressionUUID->"adf25cec-4525-49e3-954f-\
+df8d8c08e8f2"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -103,34 +116,39 @@ Cell[BoxData[
    "0.9999996927510721`"}], "}"}]], "Output",
  CellChangeTimes->{
   3.8684949793728805`*^9, {3.8684951310733056`*^9, 3.8684951723878345`*^9}, {
-   3.868495203330786*^9, 3.8684952301811085`*^9}},
- CellLabel->"Out[74]=",ExpressionUUID->"9e7ce067-5956-4010-8950-19c177691901"]
+   3.868495203330786*^9, 3.8684952301811085`*^9}, 3.868570635435793*^9, 
+   3.868594125862797*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"d899b63b-886c-4791-82c2-5f164585b7ee"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Manipulate", "[", 
-  RowBox[{
-   RowBox[{"ListLinePlot", "[", 
-    RowBox[{"listofprob", ",", 
-     RowBox[{"Frame", "\[Rule]", " ", "True"}], ",", 
-     RowBox[{"FrameLabel", "\[Rule]", 
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"membuat", " ", "grafik", " ", "dengan", " ", "slider"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{"listofprob", ",", 
+      RowBox[{"Frame", "\[Rule]", " ", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<number of people\>\"", ",", "\"\<probability of match\>\""}], 
+        "}"}]}], ",", " ", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"\"\<The probability of at least two of the \\n \>\"", " ", "<>", 
+        RowBox[{"ToString", "[", "n", "]"}], "<>", " ", 
+        "\"\< people chosen sharing the same birthday is \>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"P", "[", "n", "]"}], "]"}]}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
       RowBox[{"{", 
-       RowBox[{
-       "\"\<number of people\>\"", ",", "\"\<probability of match\>\""}], 
-       "}"}]}], ",", " ", 
-     RowBox[{"PlotLabel", "\[Rule]", 
-      RowBox[{"\"\<The probability of at least two of the \\n \>\"", " ", "<>", 
-       RowBox[{"ToString", "[", "n", "]"}], "<>", " ", 
-       "\"\< people chosen sharing the same birthday is \>\"", "<>", 
-       RowBox[{"ToString", "[", 
-        RowBox[{"P", "[", "n", "]"}], "]"}]}]}]}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"n", ",", "1", ",", "\"\<number of people\>\""}], "}"}], ",", 
-     "1", ",", "100", ",", "1"}], "}"}]}], "]"}]], "Input",
+       RowBox[{"n", ",", "1", ",", "\"\<number of people\>\""}], "}"}], ",", 
+      "1", ",", "100", ",", "1"}], "}"}]}], "]"}]}]], "Input",
  CellChangeTimes->{{3.8684952512843857`*^9, 3.8684952670441628`*^9}, {
   3.868495463690884*^9, 3.868495495058172*^9}, {3.8684955409143686`*^9, 
   3.868495584098274*^9}, {3.8684956498671207`*^9, 3.8684956952282705`*^9}, {
@@ -138,25 +156,25 @@ Cell[BoxData[
   3.8684959480240717`*^9}, {3.8684960432027216`*^9, 3.8684960835234456`*^9}, {
   3.868496316074663*^9, 3.8684963382376566`*^9}, {3.86849644834221*^9, 
   3.8684965161680884`*^9}, {3.868496667532745*^9, 3.8684966765665145`*^9}, {
-  3.8684967131403666`*^9, 3.868496969010979*^9}},
- CellLabel->
-  "In[102]:=",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
+  3.8684967131403666`*^9, 3.868496969010979*^9}, {3.868570617138793*^9, 
+  3.868570619950007*^9}, {3.8685943417790403`*^9, 3.868594373820881*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`n$$ = 45, Typeset`show$$ = True, 
+   DynamicModuleBox[{$CellContext`n$$ = 55, Typeset`show$$ = True, 
     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`n$$], 1, "number of people"}, 1, 100, 1}}, 
     Typeset`size$$ = {396., {145., 150.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    True, $CellContext`n$37516$$ = 0}, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, $CellContext`n$9472$$ =
+     0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, "Variables" :> {$CellContext`n$$ = 1}, 
       "ControllerVariables" :> {
-        Hold[$CellContext`n$$, $CellContext`n$37516$$, 0]}, 
+        Hold[$CellContext`n$$, $CellContext`n$9472$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -182,9 +200,10 @@ Cell[BoxData[
    Deployed->True,
    StripOnInput->False],
   Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{{3.868496957147764*^9, 3.8684969695108986`*^9}},
- CellLabel->
-  "Out[102]=",ExpressionUUID->"710812cc-5520-4ce6-8d49-989530a45c07"]
+ CellChangeTimes->{{3.868496957147764*^9, 3.8684969695108986`*^9}, {
+   3.868570626755049*^9, 3.86857063790016*^9}, 3.8685941332419405`*^9, 
+   3.868594375544013*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"eb697fd0-aef6-435f-9cb4-4021ef406394"]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -199,8 +218,8 @@ Cell[BoxData[""], "Input",
   3.868500262524742*^9}},ExpressionUUID->"8d95a99b-3a70-4f4c-9cb9-\
 9af6f6c3b813"]
 },
-WindowSize->{636, 620},
-WindowMargins->{{Automatic, -5}, {Automatic, 0}},
+WindowSize->{1280, 629},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 Magnification:>1.1 Inherited,
 FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
@@ -217,15 +236,15 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 1222, 26, 77, "Input",ExpressionUUID->"adf25cec-4525-49e3-954f-df8d8c08e8f2"],
-Cell[1805, 50, 3269, 56, 389, "Output",ExpressionUUID->"9e7ce067-5956-4010-8950-19c177691901"]
+Cell[580, 22, 1771, 39, 55, "Input",ExpressionUUID->"adf25cec-4525-49e3-954f-df8d8c08e8f2"],
+Cell[2354, 63, 3317, 57, 202, "Output",ExpressionUUID->"d899b63b-886c-4791-82c2-5f164585b7ee"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5111, 111, 1534, 31, 143, "Input",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
-Cell[6648, 144, 2079, 42, 451, "Output",ExpressionUUID->"710812cc-5520-4ce6-8d49-989530a45c07"]
+Cell[5708, 125, 1792, 35, 99, "Input",ExpressionUUID->"9e28d703-079f-4bbd-a79e-65ff49d4dbda"],
+Cell[7503, 162, 2172, 43, 418, "Output",ExpressionUUID->"eb697fd0-aef6-435f-9cb4-4021ef406394"]
 }, Open  ]],
-Cell[8742, 189, 205, 4, 32, "Input",ExpressionUUID->"e917c290-4702-44aa-bc6b-90582dca118e"],
-Cell[8950, 195, 207, 4, 32, "Input",ExpressionUUID->"8d95a99b-3a70-4f4c-9cb9-9af6f6c3b813"]
+Cell[9690, 208, 205, 4, 32, "Input",ExpressionUUID->"e917c290-4702-44aa-bc6b-90582dca118e"],
+Cell[9898, 214, 207, 4, 32, "Input",ExpressionUUID->"8d95a99b-3a70-4f4c-9cb9-9af6f6c3b813"]
 }
 ]
 *)
