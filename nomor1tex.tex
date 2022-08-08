@@ -8,6 +8,8 @@
 \usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 \lstset{backgroundcolor= \color{black!5},
     language        = python,
      basicstyle      = \footnotesize,
@@ -30,13 +32,13 @@ akan dilakukan pencatatan mengenai jarak tiap simpul (yang \textit{reachable} da
 
 Algoritma BFS dapat dijelaskan sebagai berikut:
 \begin{enumerate}
-    \item buat sebuah queue $q$ yang nantinya akan memuat simpul yang akan dipreses.
+    \item buat sebuah queue $q$ yang nantinya akan memuat simpul yang akan diproses.
     \item buat sebuah array used[] yang nantinya akan menandakan simpul mana saja yang sudah dikunjungi
     \item  mula-mula, masukan simpul $start$ pada queue $q$ dan set used[$start$]=$true$, dan untuk sembarang simpul $v$ lainnya set used[$v$]=$false$
     \item kemudian, lakukan looping sampai queue $q$ kosong. Pada setiap iterasi, pop simpul terdepan pada $q$, lakukan kunjungan pada simpul tetangga yang belum dikunjungi (used[$v$]=$false$) dan memasukan simpul tersebut pada $q$ (used[$v$] menjadi $true$)
 \end{enumerate}
 Sebagai hasilnya, ketika $q$ kosong, kita sudah mengunjungi setiap simpul yang \textit{reachable} dari simpul \textit{start}, dengan setiap simpul yang dikunjungi dilakukan dengan jarak terpendek.
-kita hanya perlu sebuah array dist[] untuk menyimpan jarak-jarak tersebut selama proses BFS berlangsung. Penjelasan yang diminta tepat dist[end].
+kita hanya perlu sebuah array dist[] untuk menyimpan jarak-jarak tersebut selama proses BFS berlangsung.Jawaban yang diminta tepat dist[end].
 
 berikut ini adalah impelentasi dengan python:
 
@@ -114,7 +116,7 @@ Misalkan $A$ himpunan semua konfigurasi papan yang mungkin, tinjau fungsi $f :A 
 mudah ditunjukkan bahwa fungsi $f$ memetakan $A$ ke himpunan $\{0,1,\dots, 63\}$ dan fungsi $f$ juga memenuhi
 karaktersitik yang diinginkan karena untuk sembarang $x\in A$ dan $y\in \{0,1,\dots, 63\}$, jika $x^{*}$ adalah
 papan $x$ yang koin pada lokasi $f(x) \oplus y$ dibalikkan, maka $f(x^{*})=y$
-dengan fungsi $f$ tersebut, kita dapat pastikan akan selalu bisa meng-encode lokasi kuncinya,
+. Dengan fungsi $f$ tersebut, kita dapat pastikan akan selalu bisa meng-encode lokasi kuncinya,
 sehingga penebak akan selalu benar menebak dengan strategi ini.
 
 \textbf{Contoh}: Misalkan untuk sembarang papan $x$ dan kita punya $f(x)=37$ (lihat tabel \ref{papan}), namun lokasi kunci berada di $20$ (lihat tabel \ref{papan}).
@@ -179,4 +181,75 @@ Berikut ini adalah implementasi fungsi f, infortmant, guesser-nya:
 
 \break
 
+\section{Nomor 1 Mathematica}
+Misalkan $A$ adalah kejadian minimal dua dari $n$ orang memiliki tanggal lahir yang sama.
+Misalkan $A'$ adalah kejadian komplemen dari $A$, semua orang tidak memiliki tanggal lahir yang sama.
+Dengan begitu, kita punya $$P(A')=\frac{365}{365}\times\frac{364}{365}\times\dots\times \frac{365-n+1}{365}= \frac{n! \binom{365}{n}}{365^n}$$
+dan $$P(A)=1-P(A')$$.
+
+
+\section{Nomor 2 Mathematica}
+Kita akan melakukan traversal pada grid dengan pergerakan spiral, 
+lalu mengisi cell tersebut dengan angka dari $1$ sampai $n^2$.
+
+Tinjau bahwa, secara berurutan pergerakannya hanyalah $\{\downarrow, \rightarrow, \uparrow, \leftarrow\, \dots\}$.
+Kita hanya perlu kondisi kapan kita akan berganti gerakan (contoh: dari gerakan kebawah menjadi gerakan kekanan)
+Tinjau beberapa kasus general berikut:
+
+\begin{enumerate}
+    \item 
+    \begin{table}[!ht]
+        \centering
+        \caption{Kasus 1: mengganti gerakan ketika akan keluar dari grid-nya}
+        \begin{tabular}{|l|l|l|l|}
+        \hline
+            1 & - & - & - \\ \hline
+            2 & - & - & - \\ \hline
+            3 & - & - & - \\ \hline
+            X & - & - & - \\ \hline
+        \end{tabular}
+        \label{spiralgrid1}
+    \end{table}
+
+    Tinjau tabel \ref{spiralgrid1}. Pada kasus ini, kita sudah traverse kebawah hingga posisi X.
+    untuk mengganti ke gerakan selanjutnya, kita gunakan conditional ketika gerakan awal (sebelum berganti) mengakibatkan posisi keluar dari grid.
+    Dengan begitu, untuk contoh kasus di atas kita punya kondosi berikut:
+    \begin{lstlisting}
+IF posisi_baris+current_movement_baris>n
+    current_movement_baris= next_movement_baris
+    current_movement_kolom= next_movement_kolom
+END IF
+    \end{lstlisting}
+    Untuk ketiga kasus out of grid lainnya similar.
+
+
+    \begin{table}[!h]
+        \centering
+        \caption{mengganti gerakan ketika posisi selanjutnya sudah disi}
+        \begin{tabular}{|l|l|l|l|}
+        \hline
+            1 & - & - & - \\ \hline
+            2 & - & - & - \\ \hline
+            3 & 10 & 9 & 8 \\ \hline
+            4 & 5 & 6 & 7 \\ \hline
+        \end{tabular}
+        \label{spiralgrid2}
+    \end{table}
+
+
+    \item Tinjau tabel \ref{spiralgrid2}. pada kasus ini kita berada di posisi 10 dan sedang bergerak ke kiri.
+    Tinjau bahwa jika kita bergerak ke kanan, sel selanjutnya sudahlah diisi. oleh karena itu,
+    kita bisa mengganti gerakannya dengan kondisikondisi sel selanjutnya sudah diisi.
+    dalam psudocode:
+    \begin{lstlisting}
+IF grid[posisi_baris+current_movement+baris][posisi_kolom+current_movement_kolom] not empty
+current_movement_baris= next_movement_baris
+current_movement_kolom= next_movement_kolom
+END IF
+    \end{lstlisting}
+
+
+\end{enumerate}
+Selanjutnya, Nilai terbesar selalulah $n^2$ dan posisinya akan ditengah jika $n$ ganjil.
+lalu sumasi dari elemen pada grid adalah $1+2+\dots +n^2= \frac{n^2 (n^2+1)}{2}$
 \end{document}
