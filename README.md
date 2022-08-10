@@ -2,5 +2,5 @@
 
 Soal dapat diakses di pada [laman brikut ini](https://drive.google.com/file/d/1aRgRU9hv2Pi3tWpQK1kjZWfjgp6cf7GF/view)
 
-Buka bagian [[Penjelasan dan presentasi]] untuk melihat ide umum dalam menyelesaikan soal.
+Buka bagian [Penjelasan dan presentasi](/Penjelasan%20dan%20Presentasi) untuk melihat ide umum dalam menyelesaikan soal.
 BUka bagian [[source code]] untuk melihat code/ implementasinya
